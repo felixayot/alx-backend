@@ -15,7 +15,7 @@ class LRUCache(BaseCaching):
 
     def put(self, key, item):
         """
-        Assign to the dictionary self.cache_data
+        Assigns to the dictionary self.cache_data
         the item value for the key key.
         If key or item is None, this method should not do anything.
         If the number of items in self.cache_data
@@ -42,17 +42,17 @@ class LRUCache(BaseCaching):
         """
         if key and item:
             self.cache_data.__setitem__(key, item)
-            if len(self.queue) > __class__.MAX_ITEMS:
-                lru_key = self.get_first_list(self.queue)
-                if lru_key:
-                    self.queue.pop(0)
-                    self.cache_data.pop(lru_key)
+        pass
+        if len(self.queue) > __class__.MAX_ITEMS:
+            lru_key = self.get_first_list(self.queue)
+            if lru_key:
+                self.queue.pop(0)
+                self.cache_data.pop(lru_key)
                 print(f"DISCARD: {lru_key}")
             if key not in self.queue:
                 self.queue.append(key)
             else:
                 self.list_move_last(key)
-        pass
 
     def get(self, key):
         """
