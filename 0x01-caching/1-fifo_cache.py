@@ -34,7 +34,7 @@ class FIFOCache(BaseCaching):
                 self.cache_data.pop(first_key)
                 # (k := next(iter(self.cache_data)), self.cache_data.pop(k))
                 print(f"DISCARD: {first_key}")
-        return
+        pass
 
     def get(self, key):
         """

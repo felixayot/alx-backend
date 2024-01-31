@@ -34,7 +34,7 @@ class LIFOCache(BaseCaching):
             if key not in self.stack:
                 self.stack.append(key)
             self.pop_last(key)
-        pass
+        return
 
     def get(self, key):
         """
