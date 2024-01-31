@@ -8,10 +8,6 @@ class FIFOCache(BaseCaching):
     """
     Represents a fifo cache caching system.
     """
-    def __init__(self):
-        """Initializes an instance of a fifo cache."""
-        super().__init__()
-
     def put(self, key, item):
         """
         Assign to the dictionary self.cache_data
