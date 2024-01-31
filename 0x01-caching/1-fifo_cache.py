@@ -13,6 +13,7 @@ class FIFOCache(BaseCaching):
         """Initializes an instance of a fifo cache."""
         super().__init__()
         self.queue = collections.deque()
+
     def put(self, key, item):
         """
         Assigns to the dictionary self.cache_data
@@ -31,7 +32,7 @@ class FIFOCache(BaseCaching):
         if len(self.cache_data) > __class__.MAX_ITEMS:
             first_key = self.queue.popleft()
             self.cache_data.pop(first_key)
-            #(k := next(iter(self.cache_data)), self.cache_data.pop(k))
+            # (k := next(iter(self.cache_data)), self.cache_data.pop(k))
             print(f"DISCARD: {first_key}")
 
     def get(self, key):
