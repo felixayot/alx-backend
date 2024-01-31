@@ -22,7 +22,7 @@ class LIFOCache(BaseCaching):
         is higher that BaseCaching.MAX_ITEMS:
         you must discard the last item put in cache (LIFO algorithm)
         you must print DISCARD: with the key discarded
-        and following by a new line
+        followed by a new line.
         """
         if key or item:
             self.cache_data.__setitem__(key, item)
@@ -34,7 +34,7 @@ class LIFOCache(BaseCaching):
             if key not in self.stack:
                 self.stack.append(key)
             self.pop_last(key)
-        return
+        pass
 
     def get(self, key):
         """

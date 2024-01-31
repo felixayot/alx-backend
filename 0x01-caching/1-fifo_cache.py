@@ -23,7 +23,7 @@ class FIFOCache(BaseCaching):
         is higher that BaseCaching.MAX_ITEMS:
         you must discard the first item put in cache (FIFO algorithm)
         you must print DISCARD: with the key discarded
-        and following by a new line
+        followed by a new line.
         """
         if key and item:
             self.cache_data.__setitem__(key, item)

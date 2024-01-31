@@ -22,23 +22,7 @@ class LRUCache(BaseCaching):
         is higher that BaseCaching.MAX_ITEMS:
         you must discard the last item put in cache (LRU algorithm)
         you must print DISCARD: with the key discarded
-        followed by a new line
-                if key is None or item is None:
-            return
-
-        self.cache_data[key] = item
-
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            first = self.get_first_list(self.queue)
-            if first:
-                self.queue.pop(0)
-                del self.cache_data[first]
-                print("DISCARD: {}".format(first))
-
-        if key not in self.queue:
-            self.queue.append(key)
-        else:
-            self.mv_last_list(key)
+        followed by a new line.
         """
         if key and item:
             self.cache_data.__setitem__(key, item)

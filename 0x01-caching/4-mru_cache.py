@@ -23,7 +23,7 @@ class MRUCache(BaseCaching):
         you must discard the most recently used item
         in the cache (MRU algorithm)
         you must print DISCARD: with the key discarded
-        followed by a new line
+        followed by a new line.
         """
         if key or item:
             self.cache_data.__setitem__(key, item)

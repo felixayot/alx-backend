@@ -24,7 +24,7 @@ class LFUCache(BaseCaching):
         you must discard the least frequently used item
         in the cache (LFU algorithm)
         you must print DISCARD: with the key discarded
-        followed by a new line
+        followed by a new line.
         """
         if key is None or item is None:
             return
