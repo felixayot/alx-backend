@@ -25,9 +25,10 @@ class FIFOCache(BaseCaching):
         you must print DISCARD: with the key discarded
         and following by a new line
         """
-        if key or item:
+        if key and item:
             self.cache_data.__setitem__(key, item)
-            self.queue.append(key)
+            if key not in self.queue:
+                self.queue.append(key)
             if len(self.cache_data) > __class__.MAX_ITEMS:
                 first_key = self.queue.popleft()
                 self.cache_data.pop(first_key)
