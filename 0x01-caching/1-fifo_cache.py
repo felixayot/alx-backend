@@ -28,12 +28,12 @@ class FIFOCache(BaseCaching):
         if key or item:
             self.cache_data.__setitem__(key, item)
             self.queue.append(key)
+            if len(self.cache_data) > __class__.MAX_ITEMS:
+                first_key = self.queue.popleft()
+                self.cache_data.pop(first_key)
+                # (k := next(iter(self.cache_data)), self.cache_data.pop(k))
+                print(f"DISCARD: {first_key}")
         pass
-        if len(self.cache_data) > __class__.MAX_ITEMS:
-            first_key = self.queue.popleft()
-            self.cache_data.pop(first_key)
-            # (k := next(iter(self.cache_data)), self.cache_data.pop(k))
-            print(f"DISCARD: {first_key}")
 
     def get(self, key):
         """
