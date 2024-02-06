@@ -27,8 +27,7 @@ users = {
 }
 
 
-@app.before_request
-def get_user(login_as) -> Union[Dict, None]:
+def get_user(login_as: int) -> Union[Dict, None]:
     """Get user from request."""
     if login_as and int(login_as) in users:
         return users[int(login_as)]
@@ -38,8 +37,8 @@ def get_user(login_as) -> Union[Dict, None]:
 @app.before_request
 def before_request() -> None:
     """Get user from request."""
-    login_as = request.args.get("login_as")
-    g.user = get_user(login_as)
+    user = get_user()
+    g.user = user
 
 
 @app.route("/", strict_slashes=False)
