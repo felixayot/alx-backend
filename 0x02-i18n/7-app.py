@@ -72,14 +72,14 @@ def get_timezone() -> str:
         if request.args.get("timezone"):
             timezone = request.args.get("timezone")
             if timezone:
-                tz = pytz.timezone(timezone)
+                return pytz.timezone(timezone)
         elif g.user:
             timezone = g.user.get("timezone")
             if timezone:
-                tz = pytz.timezone(timezone)
+                return pytz.timezone(timezone)
         else:
             timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
-            tz = pytz.timezone(timezone)
+            return pytz.timezone(timezone)
     except pytz.exceptions.UnknownTimeZoneError:
         timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
 
