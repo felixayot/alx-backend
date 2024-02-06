@@ -48,7 +48,7 @@ def helloworld():
     tz = pytz.timezone(timezone)
     current_time = datetime.now(tz)
     current_time = format_datetime(datetime=current_time)
-    return render_template("index.html")
+    return render_template("index.html", current_time=current_time)
 
 
 @babel.localeselector

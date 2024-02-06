@@ -2,5 +2,5 @@
 __pycache__/
 venv/
 messages.pot
+messages.mo
 # messages.po
-# messages.mo
