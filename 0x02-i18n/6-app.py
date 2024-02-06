@@ -49,7 +49,7 @@ def helloworld() -> str:
 def get_locale() -> str:
     """Select a language translation."""
     locale = request.args.get("locale")
-    if locale and locale in app.config["LANGUAGES"]:
+    if locale in app.config["LANGUAGES"]:
         return locale
 
     if g.user:
