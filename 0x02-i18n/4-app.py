@@ -20,7 +20,7 @@ app.config.from_object(Config)
 @app.route("/")
 def helloworld():
     """Renders Hello world page."""
-    return render_template("3-index.html", title="Welcome to Holberton")
+    return render_template("4-index.html", title="Welcome to Holberton")
 
 
 @babel.localeselector

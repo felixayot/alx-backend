@@ -42,7 +42,7 @@ def before_request():
 @app.route("/")
 def helloworld():
     """Renders Hello world page."""
-    return render_template("5-index.html", title="Welcome to Holberton")
+    return render_template("6-index.html", title="Welcome to Holberton")
 
 
 @babel.localeselector
@@ -51,6 +51,16 @@ def get_locale():
     locale = request.args.get("locale")
     if locale and locale in app.config["LANGUAGES"]:
         return locale
+
+    if g.user:
+        locale = g.user.get("locale")
+        if locale and locale in app.config["LANGUAGES"]:
+            return locale
+
+    locale = request.headers.get("locale")
+    if locale and locale in app.config["LANGUAGES"]:
+        return locale
+
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
