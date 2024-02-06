@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Flask application script."""
 from flask import Flask, render_template, request, g
-from flask_babel import Babel, _, gettext
+from flask_babel import Babel, _, gettext, format_datetime
 import pytz
+from datetime import datetime
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -43,7 +44,11 @@ def before_request():
 @app.route("/")
 def helloworld():
     """Renders Hello world page."""
-    return render_template("7-index.html")
+    timezone = get_timezone()
+    tz = pytz.timezone(timezone)
+    current_time = datetime.now(tz)
+    current_time = format_datetime(datetime=current_time)
+    return render_template("index.html")
 
 
 @babel.localeselector
