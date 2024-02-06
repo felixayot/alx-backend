@@ -27,10 +27,11 @@ users = {
 }
 
 
-def get_user(login_as: int) -> Union[Dict, None]:
+def get_user() -> Union[Dict, None]:
     """Get user from request."""
+    login_as = request.args.get("login_as")
     if login_as and int(login_as) in users:
-        return users[int(login_as)]
+        return users.get(int(login_as))
     return None
 
 
