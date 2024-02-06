@@ -17,7 +17,7 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route("/")
+@app.route("/", strict_slashes=False)
 def helloworld():
     """Renders Hello world page."""
     return render_template("1-index.html", title="Welcome to Holberton")

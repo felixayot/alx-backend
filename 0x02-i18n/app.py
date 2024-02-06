@@ -41,7 +41,7 @@ def before_request():
     g.user = get_user(login_as)
 
 
-@app.route("/")
+@app.route("/", strict_slashes=False)
 def helloworld():
     """Renders Hello world page."""
     timezone = get_timezone()
