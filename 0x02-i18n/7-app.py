@@ -2,6 +2,7 @@
 """Flask application script."""
 from flask import Flask, render_template, request, g
 from flask_babel import Babel, _, gettext
+import pytz
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -62,6 +63,25 @@ def get_locale():
         return locale
 
     return request.accept_languages.best_match(app.config["LANGUAGES"])
+
+
+@babel.timezoneselector
+def get_timezone():
+    """Select a timezone translation."""
+    try:
+        if request.args.get("timezone"):
+            timezone = request.args.get("timezone")
+            if timezone:
+                tz = pytz.timezone(timezone)
+        elif g.user:
+            timezone = g.user.get("timezone")
+            if timezone:
+                tz = pytz.timezone(timezone)
+        else:
+            timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
+            tz = pytz.timezone(timezone)
+    except pytz.exceptions.UnknownTimeZoneError:
+        timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
 
 
 if __name__ == "__main__":
