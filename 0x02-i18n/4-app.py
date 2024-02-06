@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Flask application script."""
 from flask import Flask, render_template, request
-from flask_babel import Babel, _, gettext
+from flask_babel import Babel, _
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -18,13 +18,13 @@ app.config.from_object(Config)
 
 
 @app.route("/", strict_slashes=False)
-def helloworld():
+def helloworld() -> str:
     """Renders Hello world page."""
     return render_template("4-index.html")
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """Select a language translation."""
     locale = request.args.get("locale")
     if locale and locale in app.config["LANGUAGES"]:
@@ -33,4 +33,4 @@ def get_locale():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5500)
+    app.run()
