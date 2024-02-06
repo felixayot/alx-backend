@@ -16,6 +16,7 @@ class Config(object):
 
 app.config.from_object(Config)
 
+
 @app.route("/")
 def helloworld():
     """Renders Hello world page."""
