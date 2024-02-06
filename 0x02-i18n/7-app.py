@@ -41,12 +41,6 @@ def before_request() -> None:
     g.user = user
 
 
-@app.route("/", strict_slashes=False)
-def helloworld() -> str:
-    """Renders Hello world page."""
-    return render_template("7-index.html")
-
-
 @babel.localeselector
 def get_locale() -> str:
     """Select a language translation."""
@@ -85,6 +79,12 @@ def get_timezone() -> str:
         timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
 
     return timezone
+
+
+@app.route("/", strict_slashes=False)
+def helloworld() -> str:
+    """Renders Hello world page."""
+    return render_template("7-index.html")
 
 
 if __name__ == "__main__":

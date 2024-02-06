@@ -42,16 +42,6 @@ def before_request() -> None:
     g.user = user
 
 
-@app.route("/", strict_slashes=False)
-def helloworld() -> str:
-    """Renders Hello world page."""
-    timezone = get_timezone()
-    tz = pytz.timezone(timezone)
-    current_time = datetime.now(tz)
-    current_time = format_datetime(datetime=current_time)
-    return render_template("index.html", current_time=current_time)
-
-
 @babel.localeselector
 def get_locale() -> str:
     """Select a language translation."""
@@ -90,6 +80,16 @@ def get_timezone() -> str:
         timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
 
     return timezone
+
+
+@app.route("/", strict_slashes=False)
+def helloworld() -> str:
+    """Renders Hello world page."""
+    timezone = get_timezone()
+    tz = pytz.timezone(timezone)
+    current_time = datetime.now(tz)
+    current_time = format_datetime(datetime=current_time)
+    return render_template("index.html", current_time=current_time)
 
 
 if __name__ == "__main__":

@@ -17,16 +17,16 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route("/", strict_slashes=False)
-def helloworld():
-    """Renders Hello world page."""
-    return render_template("2-index.html", title="Welcome to Holberton")
-
-
 @babel.localeselector
 def get_locale():
     """Select a language translation."""
     return request.accept_languages.best_match(app.config["LANGUAGES"])
+
+
+@app.route("/", strict_slashes=False)
+def helloworld():
+    """Renders Hello world page."""
+    return render_template("2-index.html", title="Welcome to Holberton")
 
 
 if __name__ == "__main__":

@@ -17,12 +17,6 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route("/", strict_slashes=False)
-def helloworld() -> str:
-    """Renders Hello world page."""
-    return render_template("4-index.html")
-
-
 @babel.localeselector
 def get_locale() -> str:
     """Select a language translation."""
@@ -30,6 +24,12 @@ def get_locale() -> str:
     if locale in app.config["LANGUAGES"]:
         return locale
     return request.accept_languages.best_match(app.config["LANGUAGES"])
+
+
+@app.route("/", strict_slashes=False)
+def helloworld() -> str:
+    """Renders Hello world page."""
+    return render_template("4-index.html")
 
 
 if __name__ == "__main__":
